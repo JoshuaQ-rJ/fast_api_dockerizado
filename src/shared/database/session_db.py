@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 database_url = os.getenv("Database_url")
-
 engine = create_engine(database_url)
 
 def get_session():
