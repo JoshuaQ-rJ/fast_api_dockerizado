@@ -1,3 +1,4 @@
+# EC2 #2 (subred privada): API FastAPI
 services:
   api:
     build: .
@@ -6,3 +7,10 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
+    healthcheck:
+      # La imagen slim no trae curl: se usa Python para llamar a /health
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
