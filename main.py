@@ -16,6 +16,11 @@ class CreateProduct(BaseModel):
     category: str
 
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 @app.post("/product", status_code=status.HTTP_201_CREATED)
 def create_product(product: CreateProduct, session: SessionDep):
     name = product.name.strip().lower()
