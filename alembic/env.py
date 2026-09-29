@@ -10,6 +10,7 @@ from alembic import context
 from sqlmodel import SQLModel
 
 # Importar los modelos que se quieren migrar aqui
+from src.models.image_model import Image
 from src.models.product_model import Product
 
 # this is the Alembic Config object, which provides
